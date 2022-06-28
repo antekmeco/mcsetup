@@ -71,8 +71,8 @@ def papersetup():
         print("Setting onlinemode to false...")
         open(f"{mcdir}/server.properties", 'wb').write(requests.get(
             "https://raw.githubusercontent.com/antekmeco/mcsetup/main/server.properties").content)
-        open(f"{mcdir}/start.sh", 'wb').write(requests.get(
-            "https://raw.githubusercontent.com/antekmeco/mcsetup/main/start.sh").content)
+    open(f"{mcdir}/start.sh", 'wb').write(requests.get(
+        "https://raw.githubusercontent.com/antekmeco/mcsetup/main/start.sh").content)
     os.system("clear")
     print("Everything done!!!")
     print("To start the server run ")
