@@ -65,14 +65,17 @@ def papersetup():
         requests.get(
             "https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.3%2B7/OpenJDK17U-jdk_x64_linux_hotspot_17.0.3_7.tar.gz").content)
     tarfile.open(f'{mcdir}/java.tar.gz').extractall(path=f'{mcdir}')
-
+    os.rename(f"{mcdir}/jdk-17.0.3+7", f"{mcdir}/java")
     onlinemode = input("Do you want to make this server cracked? > y/n")
     if onlinemode == "y":
         print("Setting onlinemode to false...")
-        open(f"{dir}/server.properties", 'wb').write(requests.get(
-            "https://gist.githubusercontent.com/4669842/e25cd0c57d0e5b31874423622e3f8be9/raw/a767931c385a877ac67c490b911f54b5a15741b6/server.properties").content)
-
-
+        open(f"{mcdir}/server.properties", 'wb').write(requests.get(
+            "https://raw.githubusercontent.com/antekmeco/mcsetup/main/server.properties").content)
+        open(f"{mcdir}/start.sh", 'wb').write(requests.get(
+            "https://raw.githubusercontent.com/antekmeco/mcsetup/main/start.sh").content)
+    os.system("clear")
+    print("Everything done!!!")
+    print("To start the server run ")
 
 
 if __name__ == "__main__":
